@@ -1,4 +1,5 @@
 # phina_esm_vue
+phina.js with vue.js
 
 ## Project setup
 ```
