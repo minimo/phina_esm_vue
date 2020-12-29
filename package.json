@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "core-js": "^3.6.5",
+    "phina.js": "https://github.com/minimo/phina.js/releases/download/esm-alpha.minimo.1/phina.esm-alpha.minimo.1.tgz",
     "vue": "^2.6.11",
     "vuex": "^3.4.0"
   },
