@@ -4,7 +4,7 @@ const gitRev = require('git-rev');
 const pkg = require('../package.json');
 
 // Read file.
-const contents = fs.readFileSync('./src/index.js', 'utf-8');
+const contents = fs.readFileSync('./src/main.js', 'utf-8');
 
 // Update log message in index.js.
 const timestamp = getBuildTimestamp();
