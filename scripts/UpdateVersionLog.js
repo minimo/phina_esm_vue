@@ -12,7 +12,7 @@ gitRev.short(hash => {
   const newContents = contents.replace(
     /console.log\('Version:.*\)/,
     `console.log('Version: ${pkg.version} (Date ${timestamp}, Commit #${hash})')`);
-  fs.writeFileSync('./src/index.js', newContents);
+  fs.writeFileSync('./src/main.js', newContents);
 });
 
 /**
