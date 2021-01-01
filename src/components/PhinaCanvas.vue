@@ -21,7 +21,7 @@ export default {
         height: 640,
         fps: 60,
         query: "#phina-canvas",
-        parent: "#pahina-canvas-root",
+        parent: "phina-canvas-root",
       };
       const app = new MainApp(appOption);
       app.replaceScene(new SceneFlow());

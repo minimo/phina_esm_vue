@@ -6,6 +6,8 @@ export class MainApp extends CanvasApp {
     super(options);
     if (options.parent) {
       this.parentDomElement = document.getElementById(options.parent);
+      console.log("parentElement", this.parentDomElement);
+      this.fitScreen();
     }
   }
 
@@ -24,8 +26,8 @@ export class MainApp extends CanvasApp {
       s.right = "0px";
 
       const parent = this.parentDomElement || window;
-      const rateWidth = e.width / parent.innerWidth;
-      const rateHeight= e.height / parent.innerHeight;
+      const rateWidth = e.width / (parent.innerWidth || parent.clientWidth);
+      const rateHeight= e.height / (parent.innerHeight || parent.clientHeight);
       const rate = e.height / e.width;
       
       if (rateWidth > rateHeight) {

@@ -58,6 +58,7 @@ export class MainScene extends DisplayScene {
         tube.x -= 2;
         if (tube.point > 0 && tube.x < this.width / 4) {
           this.score.add(tube.point);
+          window.vue.$store.commit('incrementScore');
           tube.point = 0;
         }
         if (tube.x < -50) {
