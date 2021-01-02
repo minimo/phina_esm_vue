@@ -22,6 +22,7 @@ export default {
         fps: 60,
         query: "#phina-canvas",
         parent: "phina-canvas-root",
+        fit: false,
       };
       const app = new MainApp(appOption);
       app.replaceScene(new SceneFlow());

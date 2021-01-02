@@ -29,14 +29,16 @@ export class MainApp extends CanvasApp {
       const rateWidth = e.width / (parent.innerWidth || parent.clientWidth);
       const rateHeight= e.height / (parent.innerHeight || parent.clientHeight);
       const rate = e.height / e.width;
+      const divWidth = parent.clientWidth;
+      const divHeight = parent.clientHeight;
       
       if (rateWidth > rateHeight) {
-        s.width  = Math.floor(innerWidth) + "px";
-        s.height = Math.floor(innerWidth * rate) + "px";
+        s.width  = Math.floor(divWidth) + "px";
+        s.height = Math.floor(divWidth * rate) + "px";
       }
       else {
-        s.width  = Math.floor(innerHeight / rate)+"px";
-        s.height = Math.floor(innerHeight) + "px";
+        s.width  = Math.floor(divHeight / rate)+"px";
+        s.height = Math.floor(divHeight) + "px";
       }
     }.bind(this);
     
