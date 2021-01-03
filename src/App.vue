@@ -1,7 +1,9 @@
 <template>
   <div id="app">
     <div class="phina-wrap">
-      <div class="console-left"/>
+      <div class="console-left">
+        <ConsoleLeft />
+      </div>
       <div class="console-center">
         <PhinaCanvas />
       </div>
@@ -11,11 +13,13 @@
 </template>
 
 <script>
-import PhinaCanvas from './components/PhinaCanvas.vue'
+import PhinaCanvas from './components/PhinaCanvas'
+import ConsoleLeft from './components/ConsoleLeft'
 
 export default {
   components: {
     PhinaCanvas,
+    ConsoleLeft,
   }
 }
 </script>
