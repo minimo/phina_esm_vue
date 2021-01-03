@@ -1,6 +1,6 @@
 <template>
   <div id="console-left">
-    <div>スコア</div>
+    <div>スコア </div>
     <div>{{$store.state.score}}</div>
   </div>
 </template>
@@ -10,7 +10,6 @@
 export default {
   data() {
     return {
-      score: 0,
     }
   },
   mounted() {
@@ -20,4 +19,7 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
+#console-left {
+  display: flex;
+}
 </style>
