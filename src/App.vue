@@ -7,7 +7,9 @@
       <div class="console-center">
         <PhinaCanvas />
       </div>
-      <div class="console-right"/>
+      <div class="console-right">
+        <ConsoleRight />
+      </div>
     </div>
   </div>
 </template>
@@ -15,11 +17,13 @@
 <script>
 import PhinaCanvas from './components/PhinaCanvas'
 import ConsoleLeft from './components/ConsoleLeft'
+import ConsoleRight from './components/ConsoleRight'
 
 export default {
   components: {
     PhinaCanvas,
     ConsoleLeft,
+    ConsoleRight,
   }
 }
 </script>
@@ -43,13 +47,16 @@ html, body {
 .console-left {
   width: 10%;
   height: 100%;
+  min-width: 100px;
 }
 .console-center {
   width: 80%;
   height: 100%;
+  min-width: 400px;
 }
 .console-right {
   width: 10%;
   height: 100%;
+  min-width: 100px;
 }
 </style>
