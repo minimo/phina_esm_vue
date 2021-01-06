@@ -6,7 +6,7 @@ export class Player extends GameObject {
   constructor(options) {
     options = $safe.call({}, options, { width: 32, height: 32 });
     super(options);
-    this.sprite = new Sprite("tomapiyo", 64, 64)
+    this.sprite = new Sprite("player1", 64, 64)
       .addChildTo(this)
       .setFrameIndex(1);
 
@@ -67,5 +67,10 @@ export class Player extends GameObject {
     if (this.velocity.y < 0) return;
     this.velocity.y = -power;
     return this;
+  }
+
+  changePlayer(v) {
+    this.sprite.setImage(`player${v}`, 64, 64)
+      .setFrameIndex(0);
   }
 }
