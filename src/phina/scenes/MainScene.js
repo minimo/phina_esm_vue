@@ -68,6 +68,8 @@ export class MainScene extends DisplayScene {
           this.player.flare('dead');
         }
       });
+      const index = window.vue.$store.state.character;
+      this.player.changeCharacter(index);
     } else {
       if (this.time > 120 && (app.pointer.getPointingStart() || app.keyboard.getKey("space"))) {
         this.exit();

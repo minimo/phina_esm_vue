@@ -9,6 +9,7 @@ export class Player extends GameObject {
     this.sprite = new Sprite("player1", 64, 64)
       .addChildTo(this)
       .setFrameIndex(1);
+    this.character = 0;
 
     this.collision = new RectangleShape({ width: 16, height: 16 }).addChildTo(this);
     this.collision.alpha = 0.0;
@@ -69,7 +70,8 @@ export class Player extends GameObject {
     return this;
   }
 
-  changePlayer(v) {
+  changeCharacter(v) {
+    if (this.character === v) return;
     this.sprite.setImage(`player${v}`, 64, 64)
       .setFrameIndex(0);
   }
