@@ -13,12 +13,13 @@ export default new Vuex.Store({
       value = value || 1;
       state.score += value;
     },
-  },
-  actions: {
     setCharacter(state, value) {
       value = value || 0;
       state.character = value;
+      console.log(value);
     },
+  },
+  actions: {
   },
   modules: {
   }

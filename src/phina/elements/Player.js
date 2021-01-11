@@ -72,6 +72,7 @@ export class Player extends GameObject {
 
   changeCharacter(v) {
     if (this.character === v) return;
+    this.character = v;
     this.sprite.setImage(`player${v}`, 64, 64)
       .setFrameIndex(0);
   }

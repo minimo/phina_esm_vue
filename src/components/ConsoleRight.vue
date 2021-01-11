@@ -18,8 +18,7 @@ export default {
   },
   methods: {
     onClick(v) {
-      console.log(v);
-      this.$store.dispatch('setCharacter', v);
+      this.$store.commit('setCharacter', v);
     }
   }
 }
