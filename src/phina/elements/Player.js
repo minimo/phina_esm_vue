@@ -65,7 +65,7 @@ export class Player extends GameObject {
 
   jump(power) {
     power = power || this.jumpPower;
-    if (this.velocity.y < 0) return;
+    // if (this.velocity.y < 0) return;
     this.velocity.y = -power;
     return this;
   }
