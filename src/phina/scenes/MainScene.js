@@ -52,10 +52,10 @@ export class MainScene extends DisplayScene {
     if (!this.isStart) return;
 
     if (!this.isGameOver) {
-      if(this.time % 120 == 0) this.enterTube();
+      if(this.time % 40 == 0) this.enterTube();
 
       this.tubes.forEach(tube => {
-        tube.x -= 2;
+        tube.x -= 4;
         if (tube.point > 0 && tube.x < this.width / 4) {
           this.score.add(tube.point);
           window.vue.$store.commit('incrementScore');
@@ -80,13 +80,12 @@ export class MainScene extends DisplayScene {
   }
 
   enterTube() {
-    const gap = randint(120, 250);
-    const center = randint(-100, 100);
-    const tube1 = new Tube({ isBottom: false });
-    tube1.setPosition(this.width + 30, this.height / 2 - tube1.height / 2 - gap / 2 + center).addChildTo(this.background);
-    const tube2 = new Tube({ isBottom: true, point: 0 });
-    tube2.setPosition(this.width + 30, this.height / 2 + tube2.height / 2 + gap / 2 + center).addChildTo(this.background);
+    const tube1 = new Tube({ isBottom: false, point: 1 });
+    tube1.setPosition(this.width + 30, this.height / 2 - tube1.height / 2 - randint(10, 200)).addChildTo(this.background);
     this.tubes.push(tube1);
+
+    const tube2 = new Tube({ isBottom: true, point: 0 });
+    tube2.setPosition(this.width + 30, this.height / 2 + tube2.height / 2 + randint(10, 200)).addChildTo(this.background);
     this.tubes.push(tube2);
   }
 
@@ -121,6 +120,3 @@ export class MainScene extends DisplayScene {
       });
   }
 }
-
-//ManagerSceneで使用出来る様にする為
-// window.MainScene = MainScene;

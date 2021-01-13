@@ -1,4 +1,4 @@
-import { RectangleShape, Sprite, Vector2 } from "phina.js/build/phina.esm";
+import { RectangleShape, Sprite } from "phina.js/build/phina.esm";
 import { $safe } from "../extensions/Utils";
 import { GameObject } from "./GameObject";
 
@@ -17,19 +17,14 @@ export class Player extends GameObject {
     this.animationSeq = [1, 2, 3];
     this.animationSeqIndex = 0;
 
-    this.velocity = new Vector2(0, 0);
-    this.jumpPower = 10;
-
     this.isStart = false;
     this.isDead = false;
 
     this.on('start', () => {
       this.isStart = true;
-      this.jump(15);
     });
 
-    this.on('dead', () => {
-      this.off('dead');
+    this.one('dead', () => {
       this.isDead = true;
     });
   }
@@ -41,33 +36,21 @@ export class Player extends GameObject {
       const idx = this.animationSeq[this.animationSeqIndex];
       this.sprite.setFrameIndex(idx);
     }
-
     if (!this.isStart) return;
-
+    
     if (this.isDead) {
       this.sprite.setFrameIndex(4);
-    } else if (app.pointer.getPointingStart() || app.keyboard.getKey("space")) {
-      this.jump();
+      return;
     }
-
-    this.position.add(this.velocity);
-    this.velocity.y += 0.49;
-
-    if (this.y > 640) {
-      this.flare("dead");
-    }
-    if (this.y > 800) {
-      this.flare("dead_end");
+    
+    const ct = app.mouse;
+    if (ct.getPointing()) {
+      let pt = ct.deltaPosition;
+      this.x += ~~(pt.x * 1.4);
+      this.y += ~~(pt.y * 1.4);
     }
 
     this.time++;
-  }
-
-  jump(power) {
-    power = power || this.jumpPower;
-    // if (this.velocity.y < 0) return;
-    this.velocity.y = -power;
-    return this;
   }
 
   changeCharacter(v) {
