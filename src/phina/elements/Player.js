@@ -29,7 +29,7 @@ export class Player extends GameObject {
     });
   }
 
-  update(app) {
+  update() {
     if (!this.isDead && this.time % 5 == 0) {
       this.animationSeqIndex++;
       if (this.animationSeqIndex == this.animationSeq.length) this.animationSeqIndex = 0;
@@ -41,13 +41,6 @@ export class Player extends GameObject {
     if (this.isDead) {
       this.sprite.setFrameIndex(4);
       return;
-    }
-    
-    const ct = app.mouse;
-    if (ct.getPointing()) {
-      let pt = ct.deltaPosition;
-      this.x += ~~(pt.x * 1.4);
-      this.y += ~~(pt.y * 1.4);
     }
 
     this.time++;

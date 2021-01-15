@@ -51,29 +51,35 @@ export class MainScene extends DisplayScene {
   update(app) {
     if (!this.isStart) return;
 
-    if (!this.isGameOver) {
-      if(this.time % 40 == 0) this.enterTube();
-
-      this.tubes.forEach(tube => {
-        tube.x -= 4;
-        if (tube.point > 0 && tube.x < this.width / 4) {
-          this.score.add(tube.point);
-          window.vue.$store.commit('incrementScore');
-          tube.point = 0;
-        }
-        if (tube.x < -50) {
-          tube.remove();
-        }
-        if (Collision.testRectRect(this.player, tube)) {
-          this.player.flare('dead');
-        }
-      });
-      const index = window.vue.$store.state.character;
-      this.player.changeCharacter(index);
-    } else {
+    if (this.isGameOver) {
       if (this.time > 120 && (app.pointer.getPointingStart() || app.keyboard.getKey("space"))) {
         this.exit();
       }
+      return;
+    }
+    if(this.time % 40 == 0) this.enterTube();
+
+    this.tubes.forEach(tube => {
+      tube.x -= 4;
+      if (tube.point > 0 && tube.x < this.width / 4) {
+        this.score.add(tube.point);
+        window.vue.$store.commit('incrementScore');
+        tube.point = 0;
+      }
+      if (tube.x < -50) {
+        tube.remove();
+      }
+      if (Collision.testRectRect(this.player, tube)) {
+        this.player.flare('dead');
+      }
+    });
+    const index = window.vue.$store.state.character;
+    this.player.changeCharacter(index);
+    const ct = app.mouse;
+    if (ct.getPointing()) {
+      let pt = ct.deltaPosition;
+      this.player.x += ~~(pt.x * 1.4);
+      this.player.y += ~~(pt.y * 1.4);
     }
 
     this.time++;
