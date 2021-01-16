@@ -19,13 +19,14 @@ export class MainScene extends DisplayScene {
     //バックグラウンド
     this.bg = new Sprite("background").addChildTo(this).setOrigin(0, 0);
 
-    this.background = new DisplayElement().addChildTo(this);
-    this.foreground = new DisplayElement().addChildTo(this);
+    this.backgroundLayer = new DisplayElement().addChildTo(this);
+    this.objectLayer = new DisplayElement().addChildTo(this);
+    this.foregroundLayer = new DisplayElement().addChildTo(this);
 
     //プレイヤー
     this.player = new Player()
       .setPosition(this.width / 4, this.height / 2)
-      .addChildTo(this.foreground);
+      .addChildTo(this.objectLayer);
 
     this.player.one('dead_end', () => {
       this.gameover();
@@ -35,7 +36,7 @@ export class MainScene extends DisplayScene {
     //スコア表示
     this.score = new Score()
     .setPosition(this.width / 2, 60)
-    .addChildTo(this.foreground);
+    .addChildTo(this.foregroundLayer);
 
     //カウントダウン
     this.countDown = new CountDown()
@@ -87,11 +88,11 @@ export class MainScene extends DisplayScene {
 
   enterTube() {
     const tube1 = new Tube({ isBottom: false, point: 1 });
-    tube1.setPosition(this.width + 30, this.height / 2 - tube1.height / 2 - randint(10, 200)).addChildTo(this.background);
+    tube1.setPosition(this.width + 30, this.height / 2 - tube1.height / 2 - randint(10, 200)).addChildTo(this.backgroundLayer);
     this.tubes.push(tube1);
 
     const tube2 = new Tube({ isBottom: true, point: 0 });
-    tube2.setPosition(this.width + 30, this.height / 2 + tube2.height / 2 + randint(10, 200)).addChildTo(this.background);
+    tube2.setPosition(this.width + 30, this.height / 2 + tube2.height / 2 + randint(10, 200)).addChildTo(this.backgroundLayer);
     this.tubes.push(tube2);
   }
 
@@ -108,7 +109,7 @@ export class MainScene extends DisplayScene {
     }
     this.gameoverLabel = new Label(labelOptions)
       .setPosition(this.width / 2, this.height / 2)
-      .addChildTo(this.foreground);
+      .addChildTo(this.foregroundLayer);
     
     this.gameoverLabel.tweener.clear()
       .wait(2000)
@@ -122,7 +123,7 @@ export class MainScene extends DisplayScene {
         }
         new Label(labelOptions)
           .setPosition(this.width / 2, this.height * 0.7)
-          .addChildTo(this.foreground);
+          .addChildTo(this.foregroundLayer);
       });
   }
 }
