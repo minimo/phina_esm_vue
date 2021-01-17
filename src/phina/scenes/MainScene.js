@@ -35,8 +35,8 @@ export class MainScene extends DisplayScene {
 
     //スコア表示
     this.score = new Score()
-    .setPosition(this.width / 2, 60)
-    .addChildTo(this.foregroundLayer);
+      .setPosition(this.width / 2, 60)
+      .addChildTo(this.foregroundLayer);
 
     //カウントダウン
     this.countDown = new CountDown()

@@ -9,6 +9,11 @@ export class MainApp extends CanvasApp {
       console.log("parentElement", this.parentDomElement);
       this.fitScreen();
     }
+    window.vue.$store.commit('setScreenInfo', {
+      id: this.parentDomElement.id,
+      width: options.width,
+      height: options.height,
+    });
   }
 
   fitScreen(isEver) {
