@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { Collision, DisplayElement, DisplayScene, Label, Sprite } from "phina.js/build/phina.esm";
 import { CountDown } from "../elements/CountDown";
 import { Player } from "../elements/Player";

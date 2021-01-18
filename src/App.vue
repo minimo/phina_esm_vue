@@ -15,6 +15,7 @@
 </template>
 
 <script>
+// @ts-nocheck
 import PhinaCanvas from './components/PhinaCanvas'
 import ConsoleLeft from './components/ConsoleLeft'
 import ConsoleRight from './components/ConsoleRight'

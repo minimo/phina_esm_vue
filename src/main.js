@@ -1,10 +1,11 @@
+// @ts-nocheck
 import Vue from 'vue'
 import App from './App.vue'
 import store from './store'
 
 import { DisplayScene } from 'phina.js/build/phina.esm'
 
-Vue.config.productionTip = false
+Vue.config.productionTip = false;
 
 DisplayScene.defaults.width = 960;
 DisplayScene.defaults.height = 640;
@@ -14,7 +15,7 @@ if (process.env.NODE_ENV !== 'production') {
   console.log('##### Development mode #####');
 }
 
-window.vue = new Vue({
+new Vue({
   store,
   render: h => h(App)
 }).$mount('#app')
