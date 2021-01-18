@@ -1,0 +1,13 @@
+{
+  "compilerOptions": {
+    // JSファイルもチェックするよう設定
+    "checkJs": true
+
+    /* …その他オプション */
+  },
+
+  /* 以下は任意 */
+  "exclude": [
+    "node_modules"
+  ]
+}
