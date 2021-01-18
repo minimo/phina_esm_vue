@@ -2,6 +2,7 @@ import { Collision, DisplayElement, DisplayScene, Label, Sprite } from "phina.js
 import { CountDown } from "../elements/CountDown";
 import { Player } from "../elements/Player";
 import { Score } from "../elements/Score";
+import { Shot } from "../elements/Shot";
 import { Tube } from "../elements/Tube";
 import { $safe, randint } from "../extensions/Utils";
 
@@ -81,6 +82,7 @@ export class MainScene extends DisplayScene {
       let pt = ct.deltaPosition;
       this.player.x += ~~(pt.x * 1.4);
       this.player.y += ~~(pt.y * 1.4);
+      this.enterShot();
     }
 
     this.time++;
@@ -94,6 +96,10 @@ export class MainScene extends DisplayScene {
     const tube2 = new Tube({ isBottom: true, point: 0 });
     tube2.setPosition(this.width + 30, this.height / 2 + tube2.height / 2 + randint(10, 200)).addChildTo(this.backgroundLayer);
     this.tubes.push(tube2);
+  }
+
+  enterShot() {
+    new Shot().setPosition(this.player.x, this.player.y).addChildTo(this.objectLayer);
   }
 
   gameover() {

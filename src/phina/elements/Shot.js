@@ -1,4 +1,4 @@
-import { CircleShape, RectangleShape, Sprite } from "phina.js/build/phina.esm";
+import { CircleShape, RectangleShape } from "phina.js/build/phina.esm";
 import { $safe } from "../extensions/Utils";
 import { GameObject } from "./GameObject";
 
@@ -14,7 +14,7 @@ export class Shot extends GameObject {
     this.collision.alpha = 0.0;
   }
 
-  update(app) {
-    this.x += 6;
+  update() {
+    this.x += 32;
   }
 }
