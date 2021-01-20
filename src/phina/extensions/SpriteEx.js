@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { Sprite } from "phina.js/build/phina.esm";
 
 export class SpriteEx extends Sprite {
@@ -14,22 +15,22 @@ export class SpriteEx extends Sprite {
   }
   
   setFrameIndex(index, width, height) {
-    var sx = this._frameTrimX || 0;
-    var sy = this._frameTrimY || 0;
-    var sw = this._frameTrimWidth  || (this.image.domElement.width-sx);
-    var sh = this._frameTrimHeight || (this.image.domElement.height-sy);
+    const sx = this._frameTrimX || 0;
+    const sy = this._frameTrimY || 0;
+    const sw = this._frameTrimWidth  || (this.image.domElement.width - sx);
+    const sh = this._frameTrimHeight || (this.image.domElement.height - sy);
   
-    var tw  = width || this.width;      // tw
-    var th  = height || this.height;    // th
-    var row = ~~(sw / tw);
-    var col = ~~(sh / th);
-    var maxIndex = row*col;
-    index = index%maxIndex;
-  
-    var x   = index%row;
-    var y   = ~~(index/row);
-    this.srcRect.x = sx+x*tw;
-    this.srcRect.y = sy+y*th;
+    const tw  = width || this.width;      // tw
+    const th  = height || this.height;    // th
+    const row = ~~(sw / tw);
+    const col = ~~(sh / th);
+    const maxIndex = row * col;
+    index = index % maxIndex;
+   
+    const x = index % row;
+    const y = ~~(index / row);
+    this.srcRect.x = sx + x * tw;
+    this.srcRect.y = sy + y * th;
     this.srcRect.width  = tw;
     this.srcRect.height = th;
   

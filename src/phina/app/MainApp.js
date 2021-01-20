@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { CanvasApp } from "phina.js/build/phina.esm"
 
 export class MainApp extends CanvasApp {
