@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { LoadingScene, ManagerScene } from "phina.js/build/phina.esm";
 import { AssetCatalog } from "../assets/AssetCatalog";
 import { GameTitleScene } from "./GameTitleScene";

@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { CircleShape, RectangleShape } from "phina.js/build/phina.esm";
 import { $safe } from "../extensions/Utils";
 import { GameObject } from "./GameObject";

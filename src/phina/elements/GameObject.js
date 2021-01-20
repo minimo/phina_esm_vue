@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { DisplayElement } from "phina.js/build/phina.esm";
 
 export class GameObject extends DisplayElement {
