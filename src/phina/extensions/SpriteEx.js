@@ -1,6 +1,4 @@
-// @ts-nocheck
 import { Sprite } from "phina.js/build/phina.esm";
-
 export class SpriteEx extends Sprite {
   constructor(options) {
     super(options);
