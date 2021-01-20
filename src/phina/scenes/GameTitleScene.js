@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { DisplayScene, Label } from "phina.js/build/phina.esm";
 import { $safe } from "../extensions/Utils";
 

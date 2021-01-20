@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { Label } from "phina.js/build/phina.esm";
 import { $safe } from "../extensions/Utils";
 import { GameObject } from "./GameObject";
