@@ -32,7 +32,7 @@ export class SpriteEx extends Sprite {
     this.srcRect.width  = tw;
     this.srcRect.height = th;
   
-    this._frameIndex = index;
+    this.frameIndex = index;
   
     return this;
   }
