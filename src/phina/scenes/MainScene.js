@@ -79,7 +79,11 @@ export class MainScene extends DisplayScene {
     });
     this.objectLayer.children.forEach((i, e) => {
       if (typeof e == 'Shot') {
-        console.log('found shot')
+        console.log('found shot', e);
+        return;
+      }
+      if (typeof e == 'Tube') {
+        console.log('found tube', e);
       }
     })
     const index = window.vue.$store.state.character;
