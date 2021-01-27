@@ -1,5 +1,4 @@
 // @ts-nocheck
-import { classof } from "core-js/fn/object";
 import { Collision, DisplayElement, DisplayScene, Label, Sprite } from "phina.js/build/phina.esm";
 import { CountDown } from "../elements/CountDown";
 import { Player } from "../elements/Player";
@@ -67,7 +66,7 @@ export class MainScene extends DisplayScene {
       tube.x -= 4;
       if (tube.point > 0 && tube.x < this.width / 4) {
         this.score.add(tube.point);
-        window.vue.$store.commit('incrementScore');
+        window.vueApp.$store.commit('incrementScore');
         tube.point = 0;
       }
       if (tube.x < -50) {
@@ -77,15 +76,15 @@ export class MainScene extends DisplayScene {
         this.player.flare('dead');
       }
     });
-    this.objectLayer.children.forEach((i, e) => {
-      if (typeof e == 'Shot') {
-        console.log('found shot', e);
-        return;
-      }
-      if (typeof e == 'Tube') {
-        console.log('found tube', e);
-      }
-    })
+    // this.objectLayer.children.forEach((i, e) => {
+    //   if (typeof e == 'Shot') {
+    //     console.log('found shot', e);
+    //     return;
+    //   }
+    //   if (typeof e == 'Tube') {
+    //     console.log('found tube', e);
+    //   }
+    // })
     const index = window.vue.$store.state.character;
     this.player.changeCharacter(index);
     const ct = app.mouse;

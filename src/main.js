@@ -15,7 +15,7 @@ if (process.env.NODE_ENV !== 'production') {
   console.log('##### Development mode #####');
 }
 
-new Vue({
+window.vueApp = new Vue({
   store,
   render: h => h(App)
 }).$mount('#app')
