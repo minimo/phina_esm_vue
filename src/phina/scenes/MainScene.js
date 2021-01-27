@@ -85,7 +85,7 @@ export class MainScene extends DisplayScene {
     //     console.log('found tube', e);
     //   }
     // })
-    const index = window.vue.$store.state.character;
+    const index = window.vueApp.$store.state.character;
     this.player.changeCharacter(index);
     const ct = app.mouse;
     if (ct.getPointing()) {
