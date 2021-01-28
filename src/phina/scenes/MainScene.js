@@ -62,29 +62,32 @@ export class MainScene extends DisplayScene {
     }
     if(this.time % 40 == 0) this.enterTube();
 
-    this.tubes.forEach(tube => {
-      tube.x -= 4;
-      if (tube.point > 0 && tube.x < this.width / 4) {
-        this.score.add(tube.point);
-        window.vueApp.$store.commit('incrementScore');
-        tube.point = 0;
+    this.objectLayer.children.forEach(e => {
+      const className = e.constructor.name;
+      if ( className == 'Shot') {
+        if (e.x > this.width + 32) e.remove();
+        return;
       }
-      if (tube.x < -50) {
-        tube.remove();
+    })
+    this.backgroundLayer.children.forEach(e => {
+      const className = e.constructor.name;
+      if (className == 'Tube') {
+        const tube = e;
+        tube.x -= 4;
+        if (tube.point > 0 && tube.x < this.width / 4) {
+          this.score.add(tube.point);
+          window.vueApp.$store.commit('incrementScore');
+          tube.point = 0;
+        }
+        if (tube.x < -50) {
+          tube.remove();
+        }
+        if (Collision.testRectRect(this.player, tube)) {
+          this.player.flare('dead');
+        }
+          return;
       }
-      if (Collision.testRectRect(this.player, tube)) {
-        this.player.flare('dead');
-      }
-    });
-    // this.objectLayer.children.forEach((i, e) => {
-    //   if (typeof e == 'Shot') {
-    //     console.log('found shot', e);
-    //     return;
-    //   }
-    //   if (typeof e == 'Tube') {
-    //     console.log('found tube', e);
-    //   }
-    // })
+    })
     const index = window.vueApp.$store.state.character;
     this.player.changeCharacter(index);
     const ct = app.mouse;
