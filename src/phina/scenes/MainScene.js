@@ -64,11 +64,11 @@ export class MainScene extends DisplayScene {
 
     this.objectLayer.children.forEach(e => {
       const className = e.constructor.name;
-      if ( className == 'Shot') {
+      if (className == 'Shot') {
         if (e.x > this.width + 32) e.remove();
         return;
       }
-    })
+    });
     this.backgroundLayer.children.forEach(e => {
       const className = e.constructor.name;
       if (className == 'Tube') {
@@ -82,10 +82,21 @@ export class MainScene extends DisplayScene {
         if (tube.x < -50) {
           tube.remove();
         }
+        //プレイヤーとの当たり判定
         if (Collision.testRectRect(this.player, tube)) {
           this.player.flare('dead');
         }
-          return;
+        //弾との当たり判定
+        this.objectLayer.children.forEach(e => {
+          const className = e.constructor.name;
+          if (className == 'Shot') {
+            if (Collision.testRectRect(e, tube)) {
+              e.remove();
+            }
+            return;
+          }
+        })
+        return;
       }
     })
     const index = window.vueApp.$store.state.character;
