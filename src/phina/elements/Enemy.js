@@ -7,8 +7,7 @@ export class Enemy extends GameObject {
     options = $safe.call({}, options, { width: 16, height: 16 });
     super(options);
 
-    // this.sprite = new Sprite("", 64, 64).addChildTo(this);
-    this.sprite = new CircleShape({ fill: 'red', stroke: '#aaa', strokeWidth: 1, radius: 16 }).addChildTo(this);
+    this.sprite = new CircleShape({ fill: 'blue', stroke: '#aaa', strokeWidth: 1, radius: 16 }).addChildTo(this);
 
     this.collision = new RectangleShape({ width: 16, height: 16 }).addChildTo(this);
     this.collision.alpha = 0.0;
