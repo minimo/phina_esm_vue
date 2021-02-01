@@ -5,6 +5,7 @@ import { Player } from "../elements/Player";
 import { Score } from "../elements/Score";
 import { Shot } from "../elements/Shot";
 import { Tube } from "../elements/Tube";
+import { Enemy } from "../elements/Tube";
 import { $safe, randint } from "../extensions/Utils";
 
 export class MainScene extends DisplayScene {
@@ -124,6 +125,10 @@ export class MainScene extends DisplayScene {
 
   enterShot() {
     new Shot().setPosition(this.player.x, this.player.y).addChildTo(this.objectLayer);
+  }
+
+  enterEnemy() {
+    new Enemy().setPosition(this.width + 30, this.height / 2).addChildTo(this.objectLayer);
   }
 
   gameover() {
