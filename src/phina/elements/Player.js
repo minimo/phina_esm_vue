@@ -21,13 +21,8 @@ export class Player extends GameObject {
     this.isStart = false;
     this.isDead = false;
 
-    this.on('start', () => {
-      this.isStart = true;
-    });
-
-    this.one('dead', () => {
-      this.isDead = true;
-    });
+    this.on('start', () => this.isStart = true);
+    this.one('dead', () => this.isDead = true);
   }
 
   update() {
